@@ -3,4 +3,9 @@
     <string name="my_name">Vitor Verissimo</string>
     <string name="email">vitordverissimo@gmail.com</string>
     <string name="github_link">https://github.com/vitorv</string>
+    <string name="education_header">Education</string>
+    <string name="education_degree">BS in Computer Science</string>
+    <string name="education_grad_year">2015</string>
+    <string name="education_school">University of Texas at Austin</string>
+    <string name="education_location">Austin, TX</string>
 </resources>
