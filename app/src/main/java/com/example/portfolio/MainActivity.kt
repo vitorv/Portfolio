@@ -20,6 +20,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.*
 import com.example.portfolio.ui.theme.PortfolioTheme
 
@@ -33,10 +34,30 @@ class MainActivity : ComponentActivity() {
                     Background()
                     Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
                         PersonalInfoCard(cardPadding.dp)
-                        WorkExperienceFour(cardPadding.dp)
-                        WorkExperienceThree(cardPadding.dp)
-                        WorkExperienceTwo(cardPadding.dp)
-                        WorkExperienceOne(cardPadding.dp)
+                        WorkExperienceCard(
+                            cardPadding.dp,
+                            "MNC Software",
+                            "Mar 2018 - current",
+                            "I integrated the company’s main product, a monitoring and control software, into our clients’ device ecosystems. " + "This was accomplished via traveling to the sites or remotely accessing servers. I worked on many of AT&T’s " + "uplink/downlink systems before leading integrations, from conception to release, for the Canadian House of " + "Commons system and Nebraska’s Educational Telecommunications systems. I also mentored a growing " + "integration team, as I was the first member to be hired onto the new team. In May of 2022, I moved into a " + "software developer role to work on the back-end of their core product."
+                        )
+                        WorkExperienceCard(
+                            cardPadding.dp,
+                            "Amazon",
+                            "Aug 2015 - Aug 2017",
+                            "I worked on the FireTV, on the launcher team and the Alexa integration team. I worked in Android Studio to " + "implement features, unit test the features, and integrated metrics. I worked with UI designers to implement " + "pages and worked with other developers to integrate with internal Amazon API’s. I coded entirely in Java, unit " + "tested with Mockito and PowerMock, used Git for version control, and e-gerrit as the code review submission " + "system. I got comfortable with the Agile development lifecycle and JIRA to track tasks in the process."
+                        )
+                        WorkExperienceCard(
+                            cardPadding.dp,
+                            "Amazon",
+                            "Summer 2014",
+                            "I built an internal secure tomcat 7 website that queries Amazon’s Redshift database for confidential data records " + "that only my team and the finance team could access. I coded the web service in Javascript, HTML, CSS, and " + "JQuery, and used Git for version control. To communicate between the web server and database I used " + "PostgreSQL and parameterized my queries to prevent SQL injection attacks via prepared statements. Amazon, " + "being a large company, taught me to dive deep into technologies around me to help me accomplish tasks."
+                        )
+                        WorkExperienceCard(
+                            cardPadding.dp,
+                            "Multimedia Games",
+                            "Summer 2013",
+                            "I worked on the company's new platform with a team of artists, mathematicians, and a producer. I programmed " + "in JavaScript and used Eclipse and Webstorm for IDE's. For version control I used Perforce. I worked on coding a " + "game from the bottom up, starting off with a template of the game and working my way up to its final release " + "version. I gained real world experience with object-oriented programming and experience working on a team."
+                        )
                     }
                 }
             }
@@ -134,7 +155,7 @@ fun PersonalInfoCard(cardPadding: Dp) {
 }
 
 @Composable
-fun WorkExperienceOne(cardPadding: Dp) {
+fun WorkExperienceCard(cardPadding: Dp, company: String, duration: String, description: String) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -144,107 +165,28 @@ fun WorkExperienceOne(cardPadding: Dp) {
             1.dp, Brush.verticalGradient(listOf(Color.Green, Color.Blue, Color.Magenta))
         )
     ) {
-        Column {
+        Column (modifier = Modifier.padding(15.dp)) {
             Row {
-                Text("Multimedia Games")
-                Text("Summer 2013")
+                Text(
+                    company,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 24.sp
+                )
+                Text(
+                    duration,
+                    modifier = Modifier.fillMaxWidth(),
+                    textAlign = TextAlign.End,
+                    fontWeight = FontWeight.Light,
+                    fontSize = 12.sp
+                )
             }
             Divider(
                 startIndent = 8.dp,
                 thickness = 1.dp,
                 color = Color.Gray,
-                modifier = Modifier.padding(8.dp)
+                modifier = Modifier.padding(12.dp)
             )
-            Text(
-                "I worked on the company's new platform with a team of artists, mathematicians, and a producer. I programmed " + "in JavaScript and used Eclipse and Webstorm for IDE's. For version control I used Perforce. I worked on coding a " + "game from the bottom up, starting off with a template of the game and working my way up to its final release " + "version. I gained real world experience with object-oriented programming and experience working on a team."
-            )
-        }
-    }
-}
-
-@Composable
-fun WorkExperienceTwo(cardPadding: Dp) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(all = cardPadding),
-        elevation = 15.dp,
-        border = BorderStroke(
-            1.dp, Brush.verticalGradient(listOf(Color.Green, Color.Blue, Color.Magenta))
-        )
-    ) {
-        Column {
-            Row {
-                Text("Amazon")
-                Text("Summer 2014")
-            }
-            Divider(
-                startIndent = 8.dp,
-                thickness = 1.dp,
-                color = Color.Gray,
-                modifier = Modifier.padding(8.dp)
-            )
-            Text(
-                "I built an internal secure tomcat 7 website that queries Amazon’s Redshift database for confidential data records " + "that only my team and the finance team could access. I coded the web service in Javascript, HTML, CSS, and " + "JQuery, and used Git for version control. To communicate between the web server and database I used " + "PostgreSQL and parameterized my queries to prevent SQL injection attacks via prepared statements. Amazon, " + "being a large company, taught me to dive deep into technologies around me to help me accomplish tasks."
-            )
-        }
-    }
-}
-
-@Composable
-fun WorkExperienceThree(cardPadding: Dp) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(all = cardPadding),
-        elevation = 15.dp,
-        border = BorderStroke(
-            1.dp, Brush.verticalGradient(listOf(Color.Green, Color.Blue, Color.Magenta))
-        )
-    ) {
-        Column {
-            Row {
-                Text("Amazon")
-                Text("Aug 2015 - Aug 2017")
-            }
-            Divider(
-                startIndent = 8.dp,
-                thickness = 1.dp,
-                color = Color.Gray,
-                modifier = Modifier.padding(8.dp)
-            )
-            Text(
-                "I worked on the FireTV, on the launcher team and the Alexa integration team. I worked in Android Studio to " + "implement features, unit test the features, and integrated metrics. I worked with UI designers to implement " + "pages and worked with other developers to integrate with internal Amazon API’s. I coded entirely in Java, unit " + "tested with Mockito and PowerMock, used Git for version control, and e-gerrit as the code review submission " + "system. I got comfortable with the Agile development lifecycle and JIRA to track tasks in the process."
-            )
-        }
-    }
-}
-
-@Composable
-fun WorkExperienceFour(cardPadding: Dp) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(all = cardPadding),
-        elevation = 15.dp,
-        border = BorderStroke(
-            1.dp, Brush.verticalGradient(listOf(Color.Green, Color.Blue, Color.Magenta))
-        )
-    ) {
-        Column {
-            Row {
-                Text("MNC Software")
-                Text("Mar 2018 - current")
-            }
-            Divider(
-                startIndent = 8.dp,
-                thickness = 1.dp,
-                color = Color.Gray,
-                modifier = Modifier.padding(8.dp)
-            )
-            Text(
-                "I integrated the company’s main product, a monitoring and control software, into our clients’ device ecosystems. " + "This was accomplished via traveling to the sites or remotely accessing servers. I worked on many of AT&T’s " + "uplink/downlink systems before leading integrations, from conception to release, for the Canadian House of " + "Commons system and Nebraska’s Educational Telecommunications systems. I also mentored a growing " + "integration team, as I was the first member to be hired onto the new team. In May of 2022, I moved into a " + "software developer role to work on the back-end of their core product."
-            )
+            Text(description)
         }
     }
 }
